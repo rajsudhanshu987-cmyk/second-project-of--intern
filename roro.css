@@ -77,3 +77,52 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   .section { padding: 64px 0; }
 }
 
+/* ---------------------------------------------------------------------
+   2. TYPOGRAPHY HELPERS
+--------------------------------------------------------------------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 16px;
+}
+.eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 4px var(--amber-soft);
+}
+.eyebrow.center { justify-content: center; }
+
+.section-title {
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  max-width: 640px;
+}
+.section-title.center { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+.section-lead.center { max-width: 620px; margin-left: auto; margin-right: auto; }
+
+.section-head { margin-bottom: 56px; text-align: left; }
+.section-head:has(.center) { text-align: center; }
+
+.mono-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
