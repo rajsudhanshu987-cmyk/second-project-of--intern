@@ -1,0 +1,79 @@
+
+:root {
+  
+  --bg: #0B1120;
+  --bg-elevated: #121A2E;
+  --bg-elevated-2: #17203A;
+  --text-primary: #F5F3FF;
+  --text-secondary: #8B93A7;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --violet: #7C5CFF;
+  --violet-soft: rgba(124, 92, 255, 0.14);
+  --amber: #FFB84D;
+  --amber-soft: rgba(255, 184, 77, 0.14);
+  --success: #34D399;
+  --shadow-lg: 0 24px 60px rgba(4, 8, 20, 0.55);
+  --shadow-md: 0 12px 30px rgba(4, 8, 20, 0.4);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+
+html.light {
+  --bg: #F7F7FB;
+  --bg-elevated: #FFFFFF;
+  --bg-elevated-2: #EFEEF9;
+  --text-primary: #0B1120;
+  --text-secondary: #545B6E;
+  --border: rgba(11, 17, 32, 0.08);
+  --border-strong: rgba(11, 17, 32, 0.14);
+  --violet-soft: rgba(124, 92, 255, 0.10);
+  --amber-soft: rgba(255, 184, 77, 0.16);
+  --shadow-lg: 0 24px 60px rgba(11, 17, 32, 0.12);
+  --shadow-md: 0 12px 30px rgba(11, 17, 32, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+h1, h2, h3, h4, .font-display { font-family: "Space Grotesk", sans-serif; letter-spacing: -0.02em; }
+.mono, .mono-label, .stat-number { font-family: "JetBrains Mono", monospace; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: 100px 0; position: relative; }
+.section-alt { background: var(--bg-elevated); }
+
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+}
+
