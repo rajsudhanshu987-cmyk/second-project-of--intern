@@ -480,3 +480,21 @@ html.light .navbar { background: rgba(247, 247, 251, 0.75); }
   .timeline { grid-template-columns: 1fr 1fr; }
 }
 
+
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.team-card { text-align: center; }
+.team-photo {
+  border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; margin-bottom: 16px;
+  border: 1px solid var(--border);
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.team-card:hover .team-photo img { transform: scale(1.06); }
+.team-card h3 { font-size: 1.02rem; margin-bottom: 2px; }
+.team-role { font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 12px; }
+.team-social { display: flex; justify-content: center; gap: 14px; }
+.team-social a { color: var(--text-secondary); transition: color 0.25s ease; }
+.team-social a:hover { color: var(--violet); }
+
+@media (max-width: 900px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .team-grid { grid-template-columns: 1fr; } }
+
