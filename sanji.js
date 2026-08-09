@@ -54,3 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   
+  let currentTheme = 'dark';
+  applyTheme(currentTheme);
+
+  if (darkToggle) {
+    darkToggle.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(currentTheme);
+    });
+  }
+
+  
