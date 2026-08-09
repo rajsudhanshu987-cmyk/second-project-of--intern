@@ -124,3 +124,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   
+  const sections = Array.from(document.querySelectorAll('main section[id], section[id]'))
+    .filter((s) => s.id);
+  const navLinkEls = document.querySelectorAll('.nav-link[data-nav]');
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinkEls.forEach((link) => {
+          const match = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('active-link', match);
+        });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach((section) => spyObserver.observe(section));
+
+  
