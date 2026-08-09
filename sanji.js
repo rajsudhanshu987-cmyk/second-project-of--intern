@@ -33,3 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   
+  const root = document.documentElement;
+  const darkToggle = document.getElementById('darkToggle');
+  const darkToggleIcon = document.getElementById('darkToggleIcon');
+
+  const applyTheme = (theme) => {
+    if (theme === 'light') {
+      root.classList.add('light');
+      if (darkToggleIcon) {
+        darkToggleIcon.classList.remove('fa-moon');
+        darkToggleIcon.classList.add('fa-sun');
+      }
+    } else {
+      root.classList.remove('light');
+      if (darkToggleIcon) {
+        darkToggleIcon.classList.remove('fa-sun');
+        darkToggleIcon.classList.add('fa-moon');
+      }
+    }
+  };
+
+  
