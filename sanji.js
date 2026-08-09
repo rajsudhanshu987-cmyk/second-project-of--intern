@@ -93,3 +93,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   
+  const navbar = document.getElementById('navbar');
+  const scrollProgress = document.getElementById('scrollProgress');
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+  const onScroll = () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+
+   
+    if (navbar) navbar.classList.toggle('scrolled', scrollY > 12);
+
+    
+    if (scrollProgress) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+      scrollProgress.style.width = `${progress}%`;
+    }
+
+    
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('show', scrollY > 480);
+  };
+
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  
