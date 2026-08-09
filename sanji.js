@@ -65,3 +65,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   
+  const menuToggle = document.getElementById('menuToggle');
+  const menuIcon = document.getElementById('menuIcon');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      if (menuIcon) {
+        menuIcon.classList.toggle('fa-bars', !isOpen);
+        menuIcon.classList.toggle('fa-xmark', isOpen);
+      }
+    });
+
+   
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        if (menuIcon) {
+          menuIcon.classList.add('fa-bars');
+          menuIcon.classList.remove('fa-xmark');
+        }
+      });
+    });
+  }
+
+  
