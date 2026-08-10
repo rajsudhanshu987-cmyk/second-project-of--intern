@@ -240,4 +240,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
- 
+  
+  const contactForm = document.getElementById('contactForm');
+  const formSuccess = document.getElementById('formSuccess');
+
+  const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  const setFieldValidity = (fieldEl, valid) => {
+    const wrapper = fieldEl.closest('.form-field');
+    if (!wrapper) return;
+    wrapper.classList.toggle('invalid', !valid);
+  };
+
+  
