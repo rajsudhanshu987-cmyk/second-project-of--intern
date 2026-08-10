@@ -157,3 +157,39 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   
+  const counters = document.querySelectorAll('[data-count]');
+
+  const animateCounter = (el) => {
+    const target = parseFloat(el.getAttribute('data-count'));
+    const isDecimal = el.getAttribute('data-decimal') === 'true';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1600;
+    const startTime = performance.now();
+
+    const step = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+     
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString()) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = (isDecimal ? target.toFixed(1) : target.toLocaleString()) + suffix;
+      }
+    };
+    requestAnimationFrame(step);
+  };
+
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  counters.forEach((counter) => counterObserver.observe(counter));
+
+  
