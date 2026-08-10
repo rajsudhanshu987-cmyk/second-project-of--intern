@@ -193,3 +193,27 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach((counter) => counterObserver.observe(counter));
 
   
+  const timelineSection = document.getElementById('timeline');
+  const timelineSteps = document.querySelectorAll('.timeline-step');
+  const timelineFill = document.getElementById('timelineFill');
+
+  if (timelineSection) {
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          timelineSteps.forEach((step, i) => {
+            setTimeout(() => step.classList.add('lit'), i * 180);
+          });
+          if (timelineFill) {
+            timelineFill.style.transition = 'stroke-dashoffset 1.6s ease';
+            timelineFill.style.strokeDashoffset = '0';
+          }
+          timelineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    timelineObserver.observe(timelineSection);
+  }
+
+ 
