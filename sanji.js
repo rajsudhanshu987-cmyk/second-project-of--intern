@@ -252,4 +252,21 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.classList.toggle('invalid', !valid);
   };
 
-  
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName');
+      const email = document.getElementById('email');
+      const message = document.getElementById('message');
+
+      let valid = true;
+
+      if (!fullName.value.trim()) {
+        setFieldValidity(fullName, false);
+        valid = false;
+      } else {
+        setFieldValidity(fullName, true);
+      }
+
+    
