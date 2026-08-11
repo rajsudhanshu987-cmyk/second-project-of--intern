@@ -295,4 +295,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    
+   
+    contactForm.querySelectorAll('input, textarea, select').forEach((field) => {
+      field.addEventListener('input', () => {
+        const wrapper = field.closest('.form-field');
+        if (wrapper && wrapper.classList.contains('invalid')) {
+          if (field.type === 'email') {
+            if (isValidEmail(field.value.trim())) wrapper.classList.remove('invalid');
+          } else if (field.value.trim()) {
+            wrapper.classList.remove('invalid');
+          }
+        }
+      });
+    });
+  }
+
+  
