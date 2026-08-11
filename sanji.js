@@ -311,3 +311,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('newsletterEmail');
+      if (!emailInput) return;
+
+      if (isValidEmail(emailInput.value.trim())) {
+        emailInput.value = '';
+        emailInput.placeholder = "You're subscribed! 🎉";
+      } else {
+        emailInput.focus();
+        emailInput.placeholder = 'Enter a valid email first';
+      }
+    });
+  }
+
+  
