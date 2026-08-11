@@ -269,4 +269,20 @@ document.addEventListener('DOMContentLoaded', () => {
         setFieldValidity(fullName, true);
       }
 
-    
+      if (!email.value.trim() || !isValidEmail(email.value.trim())) {
+        setFieldValidity(email, false);
+        valid = false;
+      } else {
+        setFieldValidity(email, true);
+      }
+
+      if (!message.value.trim() || message.value.trim().length < 5) {
+        setFieldValidity(message, false);
+        valid = false;
+      } else {
+        setFieldValidity(message, true);
+      }
+
+      if (valid) {
+      
+      
