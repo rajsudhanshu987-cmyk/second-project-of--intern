@@ -285,4 +285,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (valid) {
       
-      
+        if (formSuccess) formSuccess.classList.add('show');
+        contactForm.reset();
+        setTimeout(() => {
+          if (formSuccess) formSuccess.classList.remove('show');
+        }, 5000);
+      } else if (formSuccess) {
+        formSuccess.classList.remove('show');
+      }
+    });
+
+    
